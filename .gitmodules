@@ -1,0 +1,39 @@
+[submodule "nvim/.config/nvim/pack/builtin/start/nvim-lspconfig"]
+	path = nvim/.config/nvim/pack/builtin/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim/.config/nvim/pack/builtin/start/nvim-cmp"]
+	path = nvim/.config/nvim/pack/builtin/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "nvim/.config/nvim/pack/builtin/start/mason.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/mason.nvim
+	url = https://github.com/williamboman/mason.nvim.git
+[submodule "nvim/.config/nvim/pack/builtin/start/cmp-nvim-lsp"]
+	path = nvim/.config/nvim/pack/builtin/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule "nvim/.config/nvim/pack/builtin/start/mason-lspconfig.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/mason-lspconfig.nvim
+	url = https://github.com/williamboman/mason-lspconfig.nvim.git
+[submodule "nvim/.config/nvim/pack/builtin/start/LuaSnip"]
+	path = nvim/.config/nvim/pack/builtin/start/LuaSnip
+	url = https://github.com/L3MON4D3/LuaSnip.git
+[submodule "nvim/.config/nvim/pack/builtin/start/vim-gitgutter"]
+	path = nvim/.config/nvim/pack/builtin/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "nvim/.config/nvim/pack/builtin/start/vim-fugitive"]
+	path = nvim/.config/nvim/pack/builtin/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "nvim/.config/nvim/pack/builtin/start/lualine.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git
+[submodule "nvim/.config/nvim/pack/builtin/start/nvim-tree.lua"]
+	path = nvim/.config/nvim/pack/builtin/start/nvim-tree.lua
+	url = https://github.com/nvim-tree/nvim-tree.lua.git
+[submodule "nvim/.config/nvim/pack/builtin/start/gruvbox.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/gruvbox.nvim
+	url = https://github.com/ellisonleao/gruvbox.nvim.git
+[submodule "nvim/.config/nvim/pack/builtin/start/plenary.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "nvim/.config/nvim/pack/builtin/start/fzf-lua"]
+	path = nvim/.config/nvim/pack/builtin/start/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua.git
