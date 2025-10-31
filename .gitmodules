@@ -1,6 +1,6 @@
 [submodule "nvim/.config/nvim/pack/builtin/start/nvim-lspconfig"]
 	path = nvim/.config/nvim/pack/builtin/start/nvim-lspconfig
-	url = https://github.com/nvim/nvim-lspconfig.git
+	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "nvim/.config/nvim/pack/builtin/start/nvim-cmp"]
 	path = nvim/.config/nvim/pack/builtin/start/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
