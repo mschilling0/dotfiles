@@ -105,6 +105,8 @@ vim.lsp.config('clangd', {
   },
 })
 
+vim.lsp.enable('pyright')
+
 require("gruvbox").load()
 require("lualine").setup()
 
@@ -134,3 +136,23 @@ require("nvim-treesitter").setup {
     additional_vim_regex_highlighting = false,
   }
 }
+
+-- Copilot inline suggestions + auth setup
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    require("copilot").setup({
+      suggestion = { auto_trigger = true }
+    })
+  end,
+  once = true,
+})
+
+-- Copilot Chat mode
+require("CopilotChat").setup({
+  model = "gemini-3-pro-preview",
+})
+
+-- Using Claude/Gemini/w/e CLI within neovim
+require("sidekick").setup({
+   nes = { enabled = false },
+})

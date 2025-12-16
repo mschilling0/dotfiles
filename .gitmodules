@@ -40,3 +40,12 @@
 [submodule "nvim/.config/nvim/pack/builtin/start/nvim-treesitter"]
 	path = nvim/.config/nvim/pack/builtin/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim/.config/nvim/pack/builtin/start/copilot.lua"]
+	path = nvim/.config/nvim/pack/builtin/start/copilot.lua
+	url = https://github.com/zbirenbaum/copilot.lua.git
+[submodule "nvim/.config/nvim/pack/builtin/start/CopilotChat.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/CopilotChat.nvim
+	url = https://github.com/CopilotC-Nvim/CopilotChat.nvim.git
+[submodule "nvim/.config/nvim/pack/builtin/start/sidekick.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/sidekick.nvim
+	url = https://github.com/folke/sidekick.nvim.git
