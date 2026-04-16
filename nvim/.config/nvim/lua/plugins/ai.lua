@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 })
 
 require("CopilotChat").setup({
-  model = "gemini-3.1-pro-preview",
+  model = "claude-opus-4.7",
 })
 
 require("sidekick").setup({
