@@ -31,3 +31,6 @@
 [submodule "nvim/.config/nvim/pack/builtin/start/nvim-treesitter"]
 	path = nvim/.config/nvim/pack/builtin/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim/.config/nvim/pack/builtin/start/nvim-web-devicons"]
+	path = nvim/.config/nvim/pack/builtin/start/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git
