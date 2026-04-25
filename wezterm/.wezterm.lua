@@ -29,9 +29,14 @@ local is_windows = wezterm.target_triple:find("windows") ~= nil
 local is_macos = wezterm.target_triple:find("apple") ~= nil
 
 if is_windows then
+  config.enable_kitty_keyboard = false
   config.font = wezterm.font_with_fallback{"IntoneMono Nerd Font", "Intel One Mono"}
   table.insert(launch_menu, {
     label = 'PowerShell',
+    args = { 'pwsh.exe', '-NoLogo' },
+  })
+  table.insert(launch_menu, {
+    label = 'PowerShell (Old)',
     args = { 'powershell.exe', '-NoLogo' },
   })
   config.default_prog = { "C:\\Program Files\\Git\\bin\\bash.exe", "--login", "-i" }

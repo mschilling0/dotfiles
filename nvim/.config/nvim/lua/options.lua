@@ -27,8 +27,8 @@ vim.opt.fileformats = "unix,mac,dos"
 vim.opt.wildmode = "longest:full,full"
 vim.opt.backspace = "eol,start,indent"
 
-vim.opt.ignorecase = true -- Required for smartcase to work reliably
-vim.opt.smartcase = true
+vim.opt.ignorecase = false
+vim.opt.smartcase = false
 vim.opt.updatetime = 300
 
 vim.opt.showmatch = true
