@@ -7,6 +7,7 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 config.initial_cols = 128
 config.initial_rows = 28
+config.scrollback_lines = 10000
 config.font_size = 13
 config.font = wezterm.font("Intel One Mono")
 config.color_scheme = 'GruvboxDarkHard'
