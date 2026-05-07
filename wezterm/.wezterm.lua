@@ -48,21 +48,19 @@ if is_windows then
 
   -- Find installed visual studio version(s) and add their compilation
   -- environment command prompts to the menu
-  for _, vsvers in
+  for _, vcvars in
     ipairs(
-      wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)')
+      wezterm.glob(
+        'Microsoft Visual Studio/20*/*/VC/Auxiliary/Build/vcvars64.bat',
+        'C:/Program Files'
+      )
     )
   do
-    local year = vsvers:gsub('Microsoft Visual Studio/', '')
+    local year, edition =
+      vcvars:match('Microsoft Visual Studio[/\\](20%d%d)[/\\]([^/\\]+)')
     table.insert(launch_menu, {
-      label = 'x64 Native Tools VS ' .. year,
-      args = {
-        'cmd.exe',
-        '/k',
-        'C:/Program Files (x86)/'
-          .. vsvers
-          .. '/BuildTools/VC/Auxiliary/Build/vcvars64.bat',
-      },
+      label = 'x64 Native Tools VS ' .. year .. ' ' .. edition,
+      args = { 'cmd.exe', '/k', 'C:/Program Files/' .. vcvars },
     })
   end
 
