@@ -7,8 +7,8 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 config.initial_cols = 128
 config.initial_rows = 28
-config.scrollback_lines = 10000
 config.font_size = 13
+config.scrollback_lines = 10000
 config.font = wezterm.font("Intel One Mono")
 config.color_scheme = 'GruvboxDarkHard'
 
@@ -19,6 +19,7 @@ config.keys = {
   { key = 'DownArrow',  mods = 'ALT', action = wezterm.action.ActivatePaneDirection 'Down' },
   { key = 'v', mods = 'CTRL|SHIFT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = 'h', mods = 'CTRL|SHIFT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = 'v', mods = 'CTRL', action =wezterm.action.PasteFrom 'Clipboard' },
 }
 
 config.inactive_pane_hsb = {
@@ -31,7 +32,7 @@ local is_macos = wezterm.target_triple:find("apple") ~= nil
 
 if is_windows then
   config.enable_kitty_keyboard = false
-  config.font = wezterm.font_with_fallback{"IntoneMono Nerd Font", "Intel One Mono"}
+  config.font = wezterm.font_with_fallback{"IntoneMono Nerd Font", "Intel One Mono", "Cascadia Code"}
   table.insert(launch_menu, {
     label = 'PowerShell',
     args = { 'pwsh.exe', '-NoLogo' },
@@ -40,6 +41,31 @@ if is_windows then
     label = 'PowerShell (Old)',
     args = { 'powershell.exe', '-NoLogo' },
   })
+  table.insert(launch_menu, {
+    label = 'Git Bash',
+    args = { 'C:\\Program Files\\Git\\bin\\bash.exe', '--login', '-i' },
+  })
+
+  -- Find installed visual studio version(s) and add their compilation
+  -- environment command prompts to the menu
+  for _, vsvers in
+    ipairs(
+      wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)')
+    )
+  do
+    local year = vsvers:gsub('Microsoft Visual Studio/', '')
+    table.insert(launch_menu, {
+      label = 'x64 Native Tools VS ' .. year,
+      args = {
+        'cmd.exe',
+        '/k',
+        'C:/Program Files (x86)/'
+          .. vsvers
+          .. '/BuildTools/VC/Auxiliary/Build/vcvars64.bat',
+      },
+    })
+  end
+
   config.default_prog = { "C:\\Program Files\\Git\\bin\\bash.exe", "--login", "-i" }
 end
 
