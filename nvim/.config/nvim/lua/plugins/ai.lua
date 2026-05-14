@@ -5,12 +5,17 @@ require("plenary")
 vim.api.nvim_create_autocmd("InsertEnter", {
   callback = function()
     require("copilot").setup({
-      suggestion = { auto_trigger = true }
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-l>",
+        },
+      },
     })
   end,
   once = true,
 })
-
 require("CopilotChat").setup({
   model = "claude-opus-4.7",
 })
