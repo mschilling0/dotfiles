@@ -19,9 +19,6 @@
 [submodule "nvim/.config/nvim/pack/builtin/start/lualine.nvim"]
 	path = nvim/.config/nvim/pack/builtin/start/lualine.nvim
 	url = https://github.com/nvim-lualine/lualine.nvim.git
-[submodule "nvim/.config/nvim/pack/builtin/start/nvim-tree.lua"]
-	path = nvim/.config/nvim/pack/builtin/start/nvim-tree.lua
-	url = https://github.com/nvim-tree/nvim-tree.lua.git
 [submodule "nvim/.config/nvim/pack/builtin/start/gruvbox.nvim"]
 	path = nvim/.config/nvim/pack/builtin/start/gruvbox.nvim
 	url = https://github.com/ellisonleao/gruvbox.nvim.git
@@ -46,3 +43,6 @@
 [submodule "nvim/.config/nvim/pack/builtin/start/sidekick.nvim"]
 	path = nvim/.config/nvim/pack/builtin/start/sidekick.nvim
 	url = https://github.com/folke/sidekick.nvim.git
+[submodule "nvim/.config/nvim/pack/builtin/start/snacks.nvim"]
+	path = nvim/.config/nvim/pack/builtin/start/snacks.nvim
+	url = https://github.com/folke/snacks.nvim.git

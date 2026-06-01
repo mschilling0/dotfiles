@@ -41,7 +41,7 @@ local servers = {
     filetypes = { "lua" },
   },
   pyright = {
-    cmd = { "pyright-python-langserver", "--stdio" },
+    cmd = { "ty", "server" },
     filetypes = { "python" },
   },
 }

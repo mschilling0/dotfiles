@@ -3,7 +3,7 @@
 -- vim.g.mapleader = " "
 -- vim.g.maplocalleader = " "
 
--- Disabling netrw (built-in file explorer) to favor nvim-tree
+-- Disabling netrw (built-in file explorer) to favor Snacks.explorer
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -58,3 +58,5 @@ vim.api.nvim_create_autocmd("CmdlineEnter", {
     end
   end,
 })
+
+vim.g.clipboard = 'osc52'

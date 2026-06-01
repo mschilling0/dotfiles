@@ -1,6 +1,4 @@
-if pcall(require, "nvim-tree") then
-  vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
-end
+vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "Toggle Explorer" })
 
 local status, fzf = pcall(require, "fzf-lua")
 if status then
