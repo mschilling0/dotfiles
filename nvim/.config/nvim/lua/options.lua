@@ -59,4 +59,23 @@ vim.api.nvim_create_autocmd("CmdlineEnter", {
   end,
 })
 
-vim.g.clipboard = 'osc52'
+-- Use OSC52 to copy to the system clipboard (works over SSH / remote).
+-- Paste reads from Neovim's own register instead of querying the terminal,
+-- which avoids WezTerm prompting for clipboard access on every paste.
+local osc52 = require("vim.ui.clipboard.osc52")
+
+local function paste()
+  return { vim.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+end
+
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = osc52.copy("+"),
+    ["*"] = osc52.copy("*"),
+  },
+  paste = {
+    ["+"] = paste,
+    ["*"] = paste,
+  },
+}
