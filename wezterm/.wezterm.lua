@@ -50,8 +50,22 @@ if is_windows then
     args = { 'C:\\Program Files\\Git\\bin\\bash.exe', '--login', '-i' },
   })
 
-  -- Find installed visual studio version(s) and add their compilation
-  -- environment command prompts to the menu
+  for _, vcvars in
+    ipairs(
+      wezterm.glob(
+        'Microsoft Visual Studio/18*/BuildTools/VC/Auxiliary/Build/vcvars64.bat',
+        'C:/Program Files (x86)'
+      )
+    )
+  do
+    local year, edition =
+      vcvars:match('Microsoft Visual Studio[/\\](%d%d)[/\\]([^/\\]+)')
+    table.insert(launch_menu, {
+      label = 'CMD x64 Native Tools VS ' .. year .. ' ' .. edition,
+      args = { 'cmd.exe', '/k', 'C:/Program Files (x86)/' .. vcvars },
+    })
+  end
+
   for _, vcvars in
     ipairs(
       wezterm.glob(
@@ -67,7 +81,7 @@ if is_windows then
       args = { 'cmd.exe', '/k', 'C:/Program Files/' .. vcvars },
     })
   end
-
+  
   config.default_prog = { "C:\\Program Files\\Git\\bin\\bash.exe", "--login", "-i" }
 end
 
