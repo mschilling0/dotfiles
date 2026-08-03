@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   once = true,
 })
 require("CopilotChat").setup({
-  model = "claude-opus-4.7",
+  model = "claude-opus-5",
 })
 
 require("sidekick").setup({
