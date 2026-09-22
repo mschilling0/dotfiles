@@ -22,35 +22,46 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("mason").setup({})
 
-local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+vim.lsp.config("*", {
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})
 
 local servers = {
   clangd = {
     cmd = {
       "clangd",
-      "--background-index",
-      "--clang-tidy",
       "--fallback-style=Google",
       "--completion-style=bundled",
-      "--cross-file-rename",
+      "-j=4",
+      "--background-index-priority=low",
     },
-    filetypes = { "c", "cpp" }
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    root_markers = {
+      { "compile_commands.json", "compile_flags.txt" },
+      ".clangd",
+      ".git",
+    },
   },
   lua_ls = {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
+    root_markers = { ".luarc.json", ".luarc.jsonc", ".stylua.toml", ".git" },
   },
-  pyright = {
+  ty = {
     cmd = { "ty", "server" },
     filetypes = { "python" },
+    root_markers = { "ty.toml", "pyproject.toml", "setup.py", "requirements.txt", ".git" },
+  },
+  markdown_oxide = {
+    cmd = { "markdown-oxide" },
+    filetypes = { "markdown" },
+    root_markers = { ".obsidian", ".moxide.toml", ".git" },
   },
 }
 
 for server, config in pairs(servers) do
-  local binary = config.cmd[1]
-  if vim.fn.executable(binary) == 1 then
-    config.capabilities = lsp_capabilities
-    vim.lsp.enable(server)
+  if vim.fn.executable(config.cmd[1]) == 1 then
     vim.lsp.config(server, config)
+    vim.lsp.enable(server)
   end
 end

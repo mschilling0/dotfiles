@@ -35,7 +35,6 @@ vim.opt.undofile = true
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.showmatch = true
-vim.opt.textwidth = 79
 vim.opt.termguicolors = true
 
 vim.opt.cursorline = true
@@ -45,23 +44,33 @@ vim.opt.sidescrolloff = 8
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Toggle ignorecase based on command type
--- This makes search (/, ?) case-insensitive but find/replace (:) case-sensitive
+-- ---------------------------------------------------------------------------
+-- Make finding / and ? searches easier by enabling ignorecase.
+-- However, leave find and replace command case-sensitive.
+-- ---------------------------------------------------------------------------
+local case_group = vim.api.nvim_create_augroup("CaseManagement", { clear = true })
+
 vim.api.nvim_create_autocmd("CmdlineEnter", {
-  group = vim.api.nvim_create_augroup("CaseManagement", { clear = true }),
+  group = case_group,
   callback = function()
-    local type = vim.fn.getcmdtype()
-    if type == ":" then
-      vim.opt.ignorecase = false
-    elseif type == "/" or type == "?" then
-      vim.opt.ignorecase = true
+    if vim.fn.getcmdtype() == ":" then
+      vim.o.ignorecase = false
     end
   end,
 })
 
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  group = case_group,
+  callback = function()
+    if vim.fn.getcmdtype() == ":" then
+      vim.o.ignorecase = true
+    end
+  end,
+})
+-- ---------------------------------------------------------------------------
+
 -- Use OSC52 to copy to the system clipboard (works over SSH / remote).
--- Paste reads from Neovim's own register instead of querying the terminal,
--- which avoids WezTerm prompting for clipboard access on every paste.
+-- Paste reads from Neovim's own register instead of querying the terminal.
 local osc52 = require("vim.ui.clipboard.osc52")
 
 local function paste()

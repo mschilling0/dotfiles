@@ -4,4 +4,7 @@ vim.cmd("colorscheme gruvbox")
 
 require("lualine").setup()
 
-require("fzf-lua").register_ui_select()
+vim.ui.select = function(...)
+  require("fzf-lua").register_ui_select()
+  return vim.ui.select(...)
+end
