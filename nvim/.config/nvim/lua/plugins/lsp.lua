@@ -34,6 +34,7 @@ local servers = {
       "--completion-style=bundled",
       "-j=4",
       "--background-index-priority=low",
+      "--log=error",
     },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     root_markers = {
@@ -56,6 +57,17 @@ local servers = {
     cmd = { "markdown-oxide" },
     filetypes = { "markdown" },
     root_markers = { ".obsidian", ".moxide.toml", ".git" },
+  },
+  gh_actions_ls = {
+    cmd = { "gh-actions-language-server", "--stdio" },
+    filetypes = { "yaml" },
+    root_dir = function(bufnr, on_dir)
+      local parent = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr))
+      if vim.endswith(parent, "/.github/workflows") then
+        on_dir(vim.fs.dirname(vim.fs.dirname(parent)))
+      end
+    end,
+    init_options = {},
   },
 }
 
